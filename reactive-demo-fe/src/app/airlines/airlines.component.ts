@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatFormField } from '@angular/material/form-field';
 import { MatSelect } from '@angular/material/select';
 
@@ -12,7 +12,7 @@ import { take } from 'rxjs';
     templateUrl: './airlines.component.html',
     imports: [MatFormField, MatSelect, MatOption, AirlinesListComponent]
 })
-export class AirlinesComponent {
+export class AirlinesComponent implements OnInit {
 
   countries: String[] = []
 

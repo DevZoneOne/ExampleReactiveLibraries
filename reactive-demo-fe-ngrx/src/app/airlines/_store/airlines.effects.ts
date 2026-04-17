@@ -22,9 +22,12 @@ export class AirlinesEffects {
   modify$: Observable<Action> = createEffect(() => this.actions$.pipe(
     ofType(AirlineActionTypes.FAVORIZE),
     map((action: Favorize) => action.payload),
-    switchMap((airline: Airline) => {
+    switchMap((airline: Partial<Airline>) => {
       return this._http
-        .get<Airline>(`/api/airline/${airline.id}/${airline.favorite}`);
+        .put<Airline>(
+        `/api/airline/${airline.id}/favorite`,
+        airline.favorite
+      )
     }),
     map(airline => new Favorized(airline))
   ));
