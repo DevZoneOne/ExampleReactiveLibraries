@@ -1,14 +1,14 @@
-import { AfterViewInit, Component, viewChild } from '@angular/core';
+import { AfterViewInit, Component, inject, viewChild } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
-import { Select, Store } from '@ngxs/store';
+import { Store } from '@ngxs/store';
 import { Favorize } from '../_store/airlines.actions';
-import { Observable } from 'rxjs';
 import { Airline } from '../_store/airlines.model';
 import { MatIconButton } from '@angular/material/button';
 
 import { MatIcon } from '@angular/material/icon';
+import { AirlinesState } from '../_store/airlines.state';
 
 @Component({
     selector: 'demo-airlines-list',
@@ -23,7 +23,7 @@ export class AirlinesListComponent implements AfterViewInit {
 
   readonly paginator = viewChild(MatPaginator);
 
-  @Select() airlines$: Observable<Airline[]>;
+  airlines$ = inject(Store).select(AirlinesState.getAirlines);
 
   constructor(private _store: Store) {
     this.airlines$

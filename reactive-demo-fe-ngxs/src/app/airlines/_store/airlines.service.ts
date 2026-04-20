@@ -23,8 +23,9 @@ export class AirlinesService {
 
   setFavorite(id: number, favorite: boolean) {
     return this._http
-      .get<Airline>(
-        `/api/airline/${id}/${favorite}`
-      );
+      .put<Airline>(
+        `/api/airline/${id}/favorite`,
+        favorite
+      )
   }
 }

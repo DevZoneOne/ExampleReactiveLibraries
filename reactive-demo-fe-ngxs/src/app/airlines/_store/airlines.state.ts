@@ -1,4 +1,4 @@
-import { Action, State, StateContext } from '@ngxs/store';
+import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { tap } from 'rxjs/operators';
 import { Favorize, Favorized, Query } from './airlines.actions';
 import { Airline } from './airlines.model';
@@ -15,6 +15,11 @@ export class AirlinesState {
   constructor(private _service: AirlinesService) {
   }
 
+  @Selector()
+  static getAirlines(state: Airline[]) {
+    return state;
+  }
+
   @Action(Query)
   query({setState}: StateContext<Airline[]>, {payload}: Query) {
     return this._service.getAirlineList(payload)
@@ -27,7 +32,7 @@ export class AirlinesState {
 
   @Action(Favorize)
   favorize({dispatch}: StateContext<Airline[]>, {payload}: Favorize) {
-    return this._service.setFavorite(payload.id, payload.favorite)
+    return this._service.setFavorite(payload.id!, payload.favorite!)
       .pipe(
         tap(
           result => dispatch(new Favorized(result))

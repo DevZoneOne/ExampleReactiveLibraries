@@ -1,21 +1,21 @@
 export class Airline {
 
-  id: number;
+  id?: number;
 
-  name: string;
+  name?: string;
 
-  alias: string;
+  alias?: string;
 
-  iata: string;
+  iata?: string;
 
-  icao: string;
+  icao?: string;
 
-  callsign: string;
+  callsign?: string;
 
-  country: string;
+  country?: string;
 
-  active: string;
+  active?: string;
 
-  favorite: boolean;
+  favorite?: boolean;
 
 }
