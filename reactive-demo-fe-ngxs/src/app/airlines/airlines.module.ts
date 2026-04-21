@@ -11,7 +11,8 @@ import { NgxsModule } from '@ngxs/store';
 import { AirlinesState } from './_store/airlines.state';
 import { AirlinesListComponent } from './airlines-list/airlines-list.component';
 import { AirlinesComponent } from './airlines.component';
-import { AirlinesService } from './_store/airlines.service';
+import { ApiService } from './_store/api.service';
+import { CountriesState } from './_store/countries.state';
 
 @NgModule({
     exports: [
@@ -27,11 +28,11 @@ import { AirlinesService } from './_store/airlines.service';
         MatSelectModule,
         MatTableModule,
         // NGXS
-        NgxsModule.forFeature([AirlinesState]),
+        NgxsModule.forFeature([AirlinesState, CountriesState]),
         AirlinesComponent,
         AirlinesListComponent
     ], providers: [
-        AirlinesService,
+        ApiService,
         provideHttpClient(withInterceptorsFromDi())
     ] })
 export class AirlinesModule {

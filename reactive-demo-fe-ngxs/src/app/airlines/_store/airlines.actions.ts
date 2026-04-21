@@ -1,6 +1,6 @@
 import { Airline } from './airlines.model';
 
-export class Query {
+export class QueryAirlines {
   static readonly type = '[Airlines] query';
 
   constructor(public payload: string) {

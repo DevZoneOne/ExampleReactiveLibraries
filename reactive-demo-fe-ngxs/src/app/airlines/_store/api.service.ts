@@ -5,7 +5,7 @@ import {catchError} from 'rxjs/operators';
 import {Airline} from './airlines.model';
 
 @Injectable()
-export class AirlinesService {
+export class ApiService {
 
   constructor(private _http: HttpClient) {
   }
@@ -20,12 +20,21 @@ export class AirlinesService {
       );
   }
 
-
   setFavorite(id: number, favorite: boolean) {
     return this._http
       .put<Airline>(
         `/api/airline/${id}/favorite`,
         favorite
       )
+      .pipe(
+        catchError((err: Response) => throwError(() => new Error(err.statusText)))
+      );
+  }
+
+  getCountryList(): Observable<string[]> {
+    return this._http
+      .get<string[]>(
+        '/api/airline/countries'
+      );
   }
 }

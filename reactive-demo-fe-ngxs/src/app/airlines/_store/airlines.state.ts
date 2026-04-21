@@ -1,8 +1,8 @@
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { tap } from 'rxjs/operators';
-import { Favorize, Favorized, Query } from './airlines.actions';
+import { Favorize, Favorized, QueryAirlines } from './airlines.actions';
 import { Airline } from './airlines.model';
-import { AirlinesService } from './airlines.service';
+import { ApiService } from './api.service';
 import {Injectable} from '@angular/core';
 
 @State<Airline[]>({
@@ -12,7 +12,7 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class AirlinesState {
 
-  constructor(private _service: AirlinesService) {
+  constructor(private _service: ApiService) {
   }
 
   @Selector()
@@ -20,8 +20,8 @@ export class AirlinesState {
     return state;
   }
 
-  @Action(Query)
-  query({setState}: StateContext<Airline[]>, {payload}: Query) {
+  @Action(QueryAirlines)
+  query({setState}: StateContext<Airline[]>, {payload}: QueryAirlines) {
     return this._service.getAirlineList(payload)
       .pipe(
         tap(result => {
