@@ -1,9 +1,44 @@
-node_modules
-.angular
+# Node / Angular
+node_modules/
+.angular/
+.angular/cache/
+dist/
+out-tsc/
+coverage/
+tmp/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
 
-.DS_Store
-dist
+# Java / Maven
+**/target/
+**/build/
+**/out/
+**/generated-sources/
+**/generated-test-sources/
+**/maven-status/
+*.class
+*.jar
+*.war
+*.ear
+logs/
+*.log
 
+# IDEs and editors
 *.iml
-.idea
-.vscode
+.idea/
+.vscode/
+*.ipr
+*.iws
+*.classpath
+.project
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Misc
+.cache/
+.sass-cache/
