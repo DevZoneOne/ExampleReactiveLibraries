@@ -3,13 +3,14 @@ Simple Front-end samples of consuming a REST service,
 - Angular 
 - Angular with NgRX
 - Angular with NgXS
+- React (Vite)
 
 Each can be started with (one at the time):
 ```
 npm start
 ```
 CTRL+C to stop the front-end server.
-The front-end will run on http://localhost:4200
+Angular front-ends run on http://localhost:4200; the React app runs on http://localhost:3000
 
 **please note**: 
 - Backend needs to be running, before starting the front-end.

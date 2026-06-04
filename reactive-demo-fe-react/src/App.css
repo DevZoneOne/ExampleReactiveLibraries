@@ -1,0 +1,70 @@
+.App {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.App h1 {
+  margin: 0 0 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.airlines .country-select {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+  max-width: 280px;
+}
+
+.airlines select {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.airlines-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.airlines-list th,
+.airlines-list td {
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.airlines-list th {
+  font-weight: 600;
+  background: #f5f5f5;
+}
+
+.favorite-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  line-height: 1;
+  padding: 0.25rem;
+}
+
+.paginator {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.paginator label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.paginator button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
