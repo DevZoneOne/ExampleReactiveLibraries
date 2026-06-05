@@ -18,12 +18,3 @@ npm start
 Open [http://localhost:3000](http://localhost:3000). API requests to `/api` are proxied to `http://localhost:8080` (see `vite.config.js`).
 
 The dev server listens on all interfaces by default (`server.host: true`).
-
-## Build
-
-```bash
-npm run build
-npm run preview
-```
-
-Production builds expect the API to be served from the same origin or configured separately.
