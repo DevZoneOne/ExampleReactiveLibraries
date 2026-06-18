@@ -1,9 +1,8 @@
-
-import { throwError as observableThrowError, Observable, throwError } from 'rxjs';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { catchError } from 'rxjs/operators';
-import { Airline } from './airlines.model';
+import {Observable, throwError} from 'rxjs';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {catchError} from 'rxjs/operators';
+import {Airline} from './airlines.model';
 
 
 @Injectable({providedIn: 'root'})
@@ -12,9 +11,9 @@ export class AirlinesService {
   constructor(private _http: HttpClient) {
   }
 
-  getCountryList(): Observable<String[]> {
+  getCountryList(): Observable<string[]> {
     return this._http
-      .get<String[]>(
+      .get<string[]>(
         '/api/airline/countries'
       )
       .pipe(

@@ -1,17 +1,29 @@
-import { AfterViewInit, Component, OnChanges, OnInit, SimpleChanges, input, viewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
-import { take } from 'rxjs/operators';
-import { Airline } from '../airlines.model';
-import { AirlinesService } from '../airlines.service';
-import { MatIconButton } from '@angular/material/button';
+import {AfterViewInit, Component, OnChanges, OnInit, SimpleChanges, input, viewChild} from '@angular/core';
+import {MatPaginator} from '@angular/material/paginator';
+import {
+  MatTableDataSource,
+  MatTable,
+  MatColumnDef,
+  MatHeaderCellDef,
+  MatHeaderCell,
+  MatCellDef,
+  MatCell,
+  MatHeaderRowDef,
+  MatHeaderRow,
+  MatRowDef,
+  MatRow
+} from '@angular/material/table';
+import {take} from 'rxjs/operators';
+import {Airline} from '../airlines.model';
+import {AirlinesService} from '../airlines.service';
+import {MatIconButton} from '@angular/material/button';
 
-import { MatIcon } from '@angular/material/icon';
+import {MatIcon} from '@angular/material/icon';
 
 @Component({
-    selector: 'demo-airlines-list',
-    templateUrl: './airlines-list.component.html',
-    imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatIconButton, MatIcon, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatPaginator]
+  selector: 'demo-airlines-list',
+  templateUrl: './airlines-list.component.html',
+  imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatIconButton, MatIcon, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatPaginator]
 })
 export class AirlinesListComponent implements OnInit, AfterViewInit, OnChanges {
 
@@ -53,6 +65,6 @@ export class AirlinesListComponent implements OnInit, AfterViewInit, OnChanges {
   updateFavorite(id: number, favorite: boolean) {
     this._service.setFavorite(id, favorite).pipe(
       take(1)
-    ).subscribe(next => this.updateList());
+    ).subscribe(_ => this.updateList());
   }
 }

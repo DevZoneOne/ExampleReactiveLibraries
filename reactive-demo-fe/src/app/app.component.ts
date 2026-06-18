@@ -7,5 +7,4 @@ import { AirlinesComponent } from './airlines/airlines.component';
     imports: [AirlinesComponent]
 })
 export class AppComponent {
-  title = 'app';
 }
