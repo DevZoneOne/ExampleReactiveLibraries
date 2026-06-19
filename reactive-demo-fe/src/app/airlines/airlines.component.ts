@@ -1,4 +1,4 @@
-import {Component, OnInit, signal} from '@angular/core';
+import {Component, inject, OnInit, signal} from '@angular/core';
 import {MatFormField} from '@angular/material/form-field';
 import {MatSelect} from '@angular/material/select';
 
@@ -16,8 +16,7 @@ export class AirlinesComponent implements OnInit {
 
   countries = signal<string[]>([]);
 
-  constructor(private _service: AirlinesService) {
-  }
+  private readonly _service = inject(AirlinesService);
 
   ngOnInit() {
     this._service.getCountryList()

@@ -13,7 +13,7 @@ import {AirlinesService} from './airlines.service';
 
 @NgModule({
   exports: [
-    AirlinesComponent
+    AirlinesComponent,
   ],
   imports: [
     // ANGULAR
@@ -25,14 +25,13 @@ import {AirlinesService} from './airlines.service';
     MatPaginatorModule,
     MatSelectModule,
     MatTableModule,
+    // PROJECT COMPONENTS
     AirlinesComponent,
-    AirlinesListComponent
+    AirlinesListComponent,
   ],
   providers: [
     AirlinesService,
-    provideHttpClient(withInterceptorsFromDi())
   ]
 })
 export class AirlinesModule {
-
 }

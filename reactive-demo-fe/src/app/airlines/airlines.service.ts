@@ -1,6 +1,6 @@
 import {Observable, throwError} from 'rxjs';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {catchError} from 'rxjs/operators';
 import {Airline} from './airlines.model';
 
@@ -8,8 +8,7 @@ import {Airline} from './airlines.model';
 @Injectable({providedIn: 'root'})
 export class AirlinesService {
 
-  constructor(private _http: HttpClient) {
-  }
+  private readonly _http = inject(HttpClient);
 
   getCountryList(): Observable<string[]> {
     return this._http
