@@ -1,4 +1,4 @@
-import {Component, inject, OnInit, signal} from '@angular/core';
+import {Component, inject, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import {MatFormField} from '@angular/material/form-field';
 import {MatSelect} from '@angular/material/select';
 
@@ -10,6 +10,7 @@ import {take} from 'rxjs';
 @Component({
   selector: 'demo-airlines',
   templateUrl: './airlines.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatFormField, MatSelect, MatOption, AirlinesListComponent]
 })
 export class AirlinesComponent implements OnInit {

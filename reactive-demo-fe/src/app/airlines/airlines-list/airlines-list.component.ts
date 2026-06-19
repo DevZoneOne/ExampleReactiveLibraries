@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, effect, inject, input, signal, viewChild} from '@angular/core';
+import {AfterViewInit, Component, effect, inject, input, signal, viewChild, ChangeDetectionStrategy} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {
   MatTableDataSource,
@@ -23,6 +23,7 @@ import {MatIcon} from '@angular/material/icon';
 @Component({
   selector: 'demo-airlines-list',
   templateUrl: './airlines-list.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatIconButton, MatIcon, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatPaginator]
 })
 export class AirlinesListComponent implements AfterViewInit {
