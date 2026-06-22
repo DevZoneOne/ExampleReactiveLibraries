@@ -1,10 +1,10 @@
 <mat-table #table [dataSource]="dataSource" matSort matSortActive="flightId" matSortDirection="asc"
-  matSortDisableClear>
+           matSortDisableClear>
 
   <ng-container matColumnDef="favorite">
-    <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="5">&nbsp;</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef fxFlex="5" mat-sort-header>&nbsp;</mat-header-cell>
     <mat-cell *matCellDef="let row" fxFlex="5">
-      <button mat-icon-button (click)="updateFavorite(row.id, !row.favorite)">
+      <button (click)="updateFavorite(row.id, !row.favorite)" mat-icon-button>
         @if (row.favorite) {
           <mat-icon>favorite</mat-icon>
         }
@@ -16,28 +16,28 @@
   </ng-container>
 
   <ng-container matColumnDef="id">
-    <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10">ID</mat-header-cell>
-    <mat-cell *matCellDef="let row" fxFlex="10">{{row.id}}</mat-cell>
+    <mat-header-cell *matHeaderCellDef fxFlex="10" mat-sort-header>ID</mat-header-cell>
+    <mat-cell *matCellDef="let row" fxFlex="10">{{ row.id }}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="name">
-    <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="40">Name</mat-header-cell>
-    <mat-cell *matCellDef="let row;" fxFlex="40"> {{row.name}}</mat-cell>
+    <mat-header-cell *matHeaderCellDef fxFlex="40" mat-sort-header>Name</mat-header-cell>
+    <mat-cell *matCellDef="let row;" fxFlex="40"> {{ row.name }}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="iata">
-    <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="15">IATA</mat-header-cell>
-    <mat-cell *matCellDef="let row;" fxFlex="15"> {{row.iata}}</mat-cell>
+    <mat-header-cell *matHeaderCellDef fxFlex="15" mat-sort-header>IATA</mat-header-cell>
+    <mat-cell *matCellDef="let row;" fxFlex="15"> {{ row.iata }}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="icao">
-    <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="15">ICAO</mat-header-cell>
-    <mat-cell *matCellDef="let row;" fxFlex="15"> {{row.icao}}</mat-cell>
+    <mat-header-cell *matHeaderCellDef fxFlex="15" mat-sort-header>ICAO</mat-header-cell>
+    <mat-cell *matCellDef="let row;" fxFlex="15"> {{ row.icao }}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="callsign">
-    <mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="15">Callsign</mat-header-cell>
-    <mat-cell *matCellDef="let row;" fxFlex="15"> {{row.callsign}}</mat-cell>
+    <mat-header-cell *matHeaderCellDef fxFlex="15" mat-sort-header>Callsign</mat-header-cell>
+    <mat-cell *matCellDef="let row;" fxFlex="15"> {{ row.callsign }}</mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -46,10 +46,10 @@
 </mat-table>
 
 <mat-paginator #paginator
-  [length]="dataSource.data.length"
-  [pageIndex]="0"
-  [pageSize]="5"
-  [pageSizeOptions]="[5,10,25,100]"
-  [showFirstLastButtons]="true">
+               [length]="dataSource.data.length"
+               [pageIndex]="0"
+               [pageSizeOptions]="[5,10,25,100]"
+               [pageSize]="5"
+               [showFirstLastButtons]="true">
 
 </mat-paginator>

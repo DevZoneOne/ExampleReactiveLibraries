@@ -1,11 +1,11 @@
-import {Component, inject, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
-import {MatFormField} from '@angular/material/form-field';
-import {MatSelect} from '@angular/material/select';
+import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
+import { MatFormField } from '@angular/material/form-field';
+import { MatSelect } from '@angular/material/select';
 
-import {MatOption} from '@angular/material/core';
-import {AirlinesListComponent} from './airlines-list/airlines-list.component';
-import {AirlinesService} from './airlines.service';
-import {take} from 'rxjs';
+import { MatOption } from '@angular/material/core';
+import { AirlinesListComponent } from './airlines-list/airlines-list.component';
+import { AirlinesService } from './airlines.service';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'demo-airlines',
@@ -16,7 +16,6 @@ import {take} from 'rxjs';
 export class AirlinesComponent implements OnInit {
 
   countries = signal<string[]>([]);
-
   private readonly _service = inject(AirlinesService);
 
   ngOnInit() {

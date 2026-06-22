@@ -1,38 +1,39 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { createEffect, Actions, ofType } from '@ngrx/effects';
-import { Action } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { AirlineActionTypes, Favorize, Favorized, Loaded, Query } from './airlines.actions';
+import { inject, Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { EMPTY } from 'rxjs';
+import { catchError, exhaustMap, map } from 'rxjs/operators';
+import * as AirlineActions from './airlines.actions';
 import { Airline } from './airlines.model';
-import { map, switchMap } from 'rxjs/operators';
 
 @Injectable()
 export class AirlinesEffects {
 
-  
-  load$: Observable<Action> = createEffect(() => this.actions$.pipe(
-    ofType(AirlineActionTypes.QUERY),
-    map((action: Query) => action.payload),
-    switchMap(payload => this._http.get<Airline[]>(`/api/airline/${payload}`)),
-    map(list => new Loaded(list))
-  ))
+  private readonly actions$ = inject(Actions);
+  private readonly _http = inject(HttpClient);
 
-  
-  modify$: Observable<Action> = createEffect(() => this.actions$.pipe(
-    ofType(AirlineActionTypes.FAVORIZE),
-    map((action: Favorize) => action.payload),
-    switchMap((airline: Partial<Airline>) => {
-      return this._http
-        .put<Airline>(
-        `/api/airline/${airline.id}/favorite`,
-        airline.favorite
+  load$ = createEffect(() => this.actions$.pipe(
+    ofType(AirlineActions.query),
+    exhaustMap(({country}) =>
+      this._http.get<Airline[]>(`/api/airline/${country}`).pipe(
+        map(airlines => AirlineActions.loaded({airlines})),
+        catchError(() => EMPTY)
       )
-    }),
-    map(airline => new Favorized(airline))
+    )
   ));
 
-  constructor(private actions$: Actions,
-              private _http: HttpClient) {
-  }
+
+  modify$ = createEffect(() => this.actions$.pipe(
+    ofType(AirlineActions.favorize),
+    exhaustMap(({airlinePartial}) =>
+      this._http.put<Airline>(
+        `/api/airline/${airlinePartial.id}/favorite`,
+        airlinePartial.favorite
+      ).pipe(
+        map(airline => AirlineActions.favorized({airline})),
+        catchError(() => EMPTY)
+      )
+    )
+  ));
+
 }

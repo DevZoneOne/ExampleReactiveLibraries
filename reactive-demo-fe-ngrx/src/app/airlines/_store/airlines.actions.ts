@@ -1,42 +1,22 @@
-import { Action } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 import { Airline } from './airlines.model';
 
-export enum AirlineActionTypes {
-  QUERY = '[Airlines] query',
-  LOADED = '[Airlines] loaded',
+export const query = createAction(
+  '[Airlines] query',
+  props<{ country: string }>()
+);
 
-  FAVORIZE = '[Airlines] favorize',
-  FAVORIZED = '[Airlines] favorized'
-}
+export const loaded = createAction(
+  '[Airlines] loaded',
+  props<{ airlines: Airline[] }>()
+);
 
-export class Query implements Action {
-  readonly type = AirlineActionTypes.QUERY;
+export const favorize = createAction(
+  '[Airlines] favorize',
+  props<{ airlinePartial: Partial<Airline> }>()
+);
 
-  constructor(public payload: string) {
-  }
-}
-
-export class Loaded implements Action {
-  readonly type = AirlineActionTypes.LOADED;
-
-  constructor(public payload: Airline[]) {
-  }
-}
-
-export class Favorize implements Action {
-  readonly type = AirlineActionTypes.FAVORIZE;
-
-  constructor(public payload: Partial<Airline>) {
-  }
-}
-
-export class Favorized implements Action {
-  readonly type = AirlineActionTypes.FAVORIZED;
-
-  constructor(public payload: Airline) {
-  }
-}
-
-export type AirlineActions =
-  Query | Loaded |
-  Favorize | Favorized;
+export const favorized = createAction(
+  '[Airlines] favorized',
+  props<{ airline: Airline }>()
+);

@@ -1,8 +1,8 @@
-import {Observable, throwError} from 'rxjs';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {inject, Injectable} from '@angular/core';
-import {catchError} from 'rxjs/operators';
-import {Airline} from './airlines.model';
+import { Observable, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+import { catchError } from 'rxjs/operators';
+import { Airline } from './airlines.model';
 
 
 @Injectable({providedIn: 'root'})

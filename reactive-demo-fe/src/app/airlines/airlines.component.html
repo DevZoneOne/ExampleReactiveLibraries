@@ -1,5 +1,5 @@
 <mat-form-field>
-  <mat-select placeholder="Country" #country value="Netherlands">
+  <mat-select #country placeholder="Country" value="Netherlands">
     @for (c of countries(); track c) {
       <mat-option [value]="c">
         {{ c }}

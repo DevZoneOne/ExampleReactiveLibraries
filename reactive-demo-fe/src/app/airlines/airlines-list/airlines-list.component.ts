@@ -1,24 +1,33 @@
-import {AfterViewInit, Component, effect, inject, input, signal, viewChild, ChangeDetectionStrategy} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
 import {
-  MatTableDataSource,
-  MatTable,
-  MatColumnDef,
-  MatHeaderCellDef,
-  MatHeaderCell,
-  MatCellDef,
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  inject,
+  input,
+  signal,
+  viewChild
+} from '@angular/core';
+import { MatIcon } from '@angular/material/icon';
+import { MatPaginator } from '@angular/material/paginator';
+import {
   MatCell,
-  MatHeaderRowDef,
+  MatCellDef,
+  MatColumnDef,
+  MatHeaderCell,
+  MatHeaderCellDef,
   MatHeaderRow,
+  MatHeaderRowDef,
+  MatRow,
   MatRowDef,
-  MatRow
+  MatTable,
+  MatTableDataSource
 } from '@angular/material/table';
-import {take} from 'rxjs/operators';
-import {Airline} from '../airlines.model';
-import {AirlinesService} from '../airlines.service';
-import {MatIconButton} from '@angular/material/button';
+import { take } from 'rxjs/operators';
+import { Airline } from '../airlines.model';
+import { AirlinesService } from '../airlines.service';
+import { MatIconButton } from '@angular/material/button';
 
-import {MatIcon} from '@angular/material/icon';
 
 @Component({
   selector: 'demo-airlines-list',
