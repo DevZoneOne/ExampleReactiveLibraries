@@ -1,18 +1,16 @@
-import { Injectable } from "@angular/core";
-import { Action, NgxsAfterBootstrap, Selector, State, StateContext } from "@ngxs/store";
-import { ApiService } from "./api.service";
-import { FetchAllCountries } from "./countries.actions";
-import { tap } from "rxjs";
+import { inject, Injectable } from '@angular/core';
+import { Action, NgxsAfterBootstrap, Selector, State, StateContext } from '@ngxs/store';
+import { tap } from 'rxjs';
+import { ApiService } from './api.service';
+import { FetchAllCountries } from './countries.actions';
 
 @State<string[]>({
-    name:'countries',
-    defaults: []
+  name: 'countries',
+  defaults: [],
 })
 @Injectable()
 export class CountriesState implements NgxsAfterBootstrap {
-
-  constructor(private _service: ApiService) {
-  }
+  private readonly _service = inject(ApiService);
 
   ngxsAfterBootstrap(ctx: StateContext<string[]>): void {
     ctx.dispatch(new FetchAllCountries());
@@ -24,13 +22,11 @@ export class CountriesState implements NgxsAfterBootstrap {
   }
 
   @Action(FetchAllCountries)
-  query({setState}: StateContext<string[]>) {
-    return this._service.getCountryList()
-      .pipe(
-        tap(result => {
-          setState(result);
-        })
-      );
+  query({ setState }: StateContext<string[]>) {
+    return this._service.getCountryList().pipe(
+      tap((result) => {
+        setState(result);
+      }),
+    );
   }
-
 }

@@ -3,12 +3,12 @@ import { createFeatureSelector, createReducer, on } from '@ngrx/store';
 import * as AirlineActions from './airlines.actions';
 import { Airline } from './airlines.model';
 
-export const airlinesAdapter = createEntityAdapter<Airline>();
+const airlinesAdapter = createEntityAdapter<Airline>();
 
-export interface State extends EntityState<Airline> {
+interface AirlineState extends EntityState<Airline> {
 }
 
-export const initialState: State = airlinesAdapter.getInitialState();
+const initialState: AirlineState = airlinesAdapter.getInitialState();
 
 export const airlinesReducer = createReducer(
   initialState,
@@ -20,7 +20,7 @@ export const airlinesReducer = createReducer(
   })
 );
 
-export const getAirlinesState = createFeatureSelector<State>('airlines');
+const getAirlinesState = createFeatureSelector<AirlineState>('airlines');
 
 export const {
   selectAll
